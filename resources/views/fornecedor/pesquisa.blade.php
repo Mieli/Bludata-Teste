@@ -26,6 +26,7 @@
                          <th>Cpf</th>  
                         <th>Cnpj</th>--}}               
                         <th>Telefone Celular</th>
+                        <th>Empresa</th>
                         {{-- <th>Telefone Residencial</th>
                         <th>Telefone Comercial</th>--}}
                         <th> &nbsp;</th>
@@ -61,9 +62,10 @@
                 //{ data: 'rg', name: 'rg' },
                 // { data: 'cpf', name: 'cpf' },
                 //{ data: 'cnpj', name: 'cnpj' },
-                { data: 'telefone_celular', name: 'Tel Cel' },  
-                // { data: 'telefone_residencial', name: 'Tel Res' },  
-                // { data: 'telefone_comercial', name: 'Tel Com' }, 
+                { data: 'telefone_celular', name: 'telefone_celular' },  
+                { data: 'empresa.nome', name: 'empresa.nome' }, 
+                // { data: 'telefone_residencial', name: 'telefone_residencial' },  
+                // { data: 'telefone_comercial', name: 'telefone_comercial' }, 
                 { data: 'menu', name: 'menu', orderable: false, searchable: false},
             ],
         });

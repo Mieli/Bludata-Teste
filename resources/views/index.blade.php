@@ -28,57 +28,48 @@
         ])
 
         @include('template.menu.opcao', [
-            'color'  => 'bg-success',
+            'color'  => 'bg-danger',
             'titulo' => 'Pesquisa',
             'texto'  => 'Pesquisar',
             'icone'  => 'ion ion-stats-bars',
             'acao'   => 'Pesquisar',
-            'rota'   => 'home',
+            'rota'   => 'home/pesquisa',
         ])
 
-        @include('template.menu.opcao', [
-            'color'  => 'bg-danger',
-            'titulo' => 'Funções',
-            'texto'  => 'Funções de Gestão',
-            'icone'  => 'ion ion-pie-graph',
-            'acao'   => 'Gestão',
-            'rota'   => 'home',
-        ]) 
+        
     </div>
     
 
 
 
-    <!-- /.row -->
-    <!-- Main row -->
+   
     <div class="row">
-        <!-- Left col -->
+       
         <section class="col-lg-6 ">
        
 
             @include('template.componentes.listagem-empresa',[
-                'titulo' => 'Empresas Cadastradas',
+                'titulo' => '(05) Últimas Empresas Cadastradas',
                 'route'  => 'empresas.create',
                 'botao'  => 'Cadastrar Empresa' 
             ])
 
         </section>
 
-        <!-- /.Left col -->
-        <!-- right col (We are only adding the ID to make the widgets sortable)-->
+        
         <section class="col-lg-6 ">
 
                 @include('template.componentes.listagem-fornecedor',[
-                    'titulo' => 'Fornecedores Cadastrados ',
+                    'titulo' => '(05) Últimos Fornecedores Cadastrados ',
                     'route'  => 'fornecedores.create',
                     'botao'  => 'Cadastrar Fornecededor' 
                 ])
         
         </section>
-        <!-- right col -->
+        
     </div>
-    <!-- /.row (main row) -->
-    </div><!-- /.container-fluid -->
+    
+    </div>
 
 @endsection
 

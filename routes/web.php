@@ -20,6 +20,11 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
         'uses' => 'IndexController@index', 
         'as'   => 'home'
     ]);
+
+    Route::get('home/pesquisa', [
+        'uses' => 'IndexController@pesquisa', 
+        'as'   => 'home.pesquisa'
+    ]);
     
     /*****************  Rota Empresas **************************************/
     Route::resource('empresas', 'EmpresaController');

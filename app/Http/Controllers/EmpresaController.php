@@ -48,10 +48,7 @@ class EmpresaController extends Controller
            'nome'   => 'required|min:5',
        ]);
 
-
         $empresa = $this->repository->add($request->all());
-
-//        dd($empresa->id);
 
         return redirect()->route('empresas.create')
                          ->with('mensagem-success', 'Cadastrado realizado com sucesso!'); 

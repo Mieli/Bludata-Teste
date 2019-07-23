@@ -54,7 +54,7 @@ class FornecedorRepository
      */
     public function query()
     {
-        return Fornecedor::query();
+        return Fornecedor::query()->with('empresa');
     }
 
 

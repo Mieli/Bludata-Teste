@@ -25,6 +25,15 @@
 
                 <ul class="list-group list-group-unbordered mb-3">
                   
+                    <li class="list-group-item">
+                        <strong> Idade: </strong> 
+                            <span id="idade">
+                                
+                              {!!  Carbon\Carbon::parse($fornecedor[0]->data_nascimento)->format('d/m/Y')  !!}
+                            
+                            </span>  
+                    </li>
+
                   <li class="list-group-item">
                       <strong> RG: </strong> {{ $fornecedor[0]->rg ?? '' }} 
                   </li>
@@ -70,7 +79,8 @@
           <div class="card">
             <div class="card-header p-2">
               <ul class="nav nav-pills">
-                <li class="nav-item"><a class="nav-link bg-primary" data-toggle="tab">Representante da Empresa</a></li>
+                <li class="nav-item"><a href="javascript:history.back()" class="nav-link btn btn-light" title="Voltar"> <i class="fa fa-mail-reply-all"></i> </a></li>
+                <li class="nav-item ml-3"><a class="nav-link bg-primary" data-toggle="tab">Representante da Empresa</a></li>
               </ul>
             </div><!-- /.card-header -->
 
@@ -81,13 +91,21 @@
                       <div class="post">
 
                           <div class="username">
-                           Empresa:  <a href="{{ route('empresas.show',$fornecedor[0]->empresa->id) }}">{{ $fornecedor[0]->empresa->nome }}</a>
-                                    <a href="{{ route('empresas.show',$fornecedor[0]->empresa->id) }}" class="float-right btn-tool"><i class="fa fa-search"></i></a>
+                           
+                            <p>
+                              <strong>CNPJ: </strong> {{ $fornecedor[0]->empresa->cnpj }}
+                              &nbsp; &nbsp;                                          
+                              <strong>Empresa: </strong> <a href="{{ route('empresas.show',$fornecedor[0]->empresa->id) }}" title="Ver Detalhes">{{ $fornecedor[0]->empresa->nome }}</a>
+                              &nbsp; &nbsp;
+                              <strong>Estado: </strong> {{ $fornecedor[0]->empresa->uf }}
+                            </p>
+
+                                    <a href="{{ route('empresas.show',$fornecedor[0]->empresa->id) }}" class="float-right btn-tool" title="Ver Detalhes da Empresa {{ $fornecedor[0]->empresa->nome }}"><i class="fa fa-search"></i></a>
                           </div>
                           <p class="description"> 
-                            <p>Estado: {{ $fornecedor[0]->empresa->uf }}</p>
-                            <p>CNPJ: {{ $fornecedor[0]->empresa->cnpj }}</p>
-                            <p>Data de Cadastro: {{ Carbon\Carbon::parse($fornecedor[0]->empresa->created_at)->format('d/m/Y') }} </p> 
+                           
+                            <p> <strong>Data de Cadastro: </strong> {{ Carbon\Carbon::parse($fornecedor[0]->empresa->created_at)->format('d/m/Y') }} </p>
+                            
                           </p>
                     
                         
@@ -102,33 +120,38 @@
         </div>        
     </div>
 
+@endsection
 
 
+@section('js')
 
-
-
-
-
-
-
-
-{{-- 
-<div class="card mt-3">
-   
+<script>
+  $( function(){
     
-    <div class="card-body">
-        <h1>Nome: {{ $empresa[0]->nome}}</h1>
+      var hoje = new Date();
 
-        <h4>CNPJ: {{ $empresa[0]->cnpj}}</h4>
+      var dtNascimento = $('#idade').html();
 
-        <span class="description">Estado: {{ $empresa[0]->uf}}</span>
+      var split = dtNascimento.split('/');
+      var novadata = split[1] + "/" +split[0]+"/"+split[2];
+      var dataNascimento = new Date(novadata);
 
-        <span class="description">Data Cadastro: {!!  Carbon\Carbon::parse($empresa[0]->created_at)->format('d/m/Y')  !!}</span>
+      //pegar a idade em anos
+      var idade = hoje.getFullYear() - dataNascimento.getFullYear();
+      //pegar a subtração do mes de nascimento
+      var mes = hoje.getMonth() - dataNascimento.getMonth();
 
-    </div>
+      if (mes < 0 || (mes === 0 && hoje.getDate() < dataNascimento.getDate())) {
+          idade--;
+      }
 
-</div>
- --}}
-
-
+      if(idade == 1){
+        $('#idade').html(idade + ' Ano');
+      }else{
+        $('#idade').html(idade + ' Anos');
+      }
+   
+  });
+</script>
+    
 @endsection

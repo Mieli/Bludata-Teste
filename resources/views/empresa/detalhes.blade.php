@@ -53,7 +53,8 @@
           <div class="card">
             <div class="card-header p-2">
               <ul class="nav nav-pills">
-                <li class="nav-item"><a class="nav-link bg-danger" data-toggle="tab">Fornecedores da Empresa</a></li>
+                  <li class="nav-item"><a href="javascript:history.back()" class="nav-link" title="Voltar"> <i class="fa fa-mail-reply-all"></i> </a></li>
+                <li class="nav-item ml-3"><a class="nav-link bg-danger" data-toggle="tab">Fornecedores da Empresa</a></li>
               </ul>
             </div><!-- /.card-header -->
 
@@ -90,32 +91,6 @@
                   </div>
                   <!-- /.row -->
 
-
-
-
-
-
-
-
-{{-- 
-                      <div class="post">
-
-                          <div class="username">
-                            <a href="{{ route('fornecedores.show',$fornecedor->id) }}">{{ $fornecedor->nome }}</a>
-                              <a href="{{ url('fornecedores') }}" class="float-right btn-tool"><i class="fa fa-search"></i></a>
-                          </div>
-                          <span class="description"> 
-                            <p>Data de Cadastro: {{ Carbon\Carbon::parse($fornecedor->created_at)->format('d/m/Y') }} </p> 
-                          </span>
-
-                          <span class="description">CNPJ: {{ $fornecedor->cnpj ?? '' }} </span>
-                          <span class="description">RG: {{ $fornecedor->rg ?? '' }} </span>
-                          <span class="description">CPF: {{ $fornecedor->cpf ?? '' }} </span>                  
-                        
-                      </div> <!-- Post -->
-
-                    @endforeach --}}
-
                 </div> 
               </div>              
             </div><!-- /.card-body -->
@@ -124,33 +99,16 @@
         </div>        
     </div>
 
+@endsection
 
+@section('js')
 
+<script>
+  $( function(){
 
+  
 
-
-
-
-
-
-
-{{-- 
-<div class="card mt-3">
-   
+  });
+</script>
     
-    <div class="card-body">
-        <h1>Nome: {{ $empresa[0]->nome}}</h1>
-
-        <h4>CNPJ: {{ $empresa[0]->cnpj}}</h4>
-
-        <span class="description">Estado: {{ $empresa[0]->uf}}</span>
-
-        <span class="description">Data Cadastro: {!!  Carbon\Carbon::parse($empresa[0]->created_at)->format('d/m/Y')  !!}</span>
-
-    </div>
-
-</div>
- --}}
-
-
 @endsection

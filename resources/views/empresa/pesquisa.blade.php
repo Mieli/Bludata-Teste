@@ -14,7 +14,7 @@
         
     <div class="card-body">
    
-        <table id="empresas" class="table table-hover table-sm">
+        <table id="empresas" class="table table-hover">
             <thead class="thead-dark">
                 <tr>
                     <th>ID</th>

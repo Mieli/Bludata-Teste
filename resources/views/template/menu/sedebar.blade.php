@@ -21,13 +21,7 @@
             <p>Fornecedores</p>
           </a>
         </li>
-        <li class="nav-item">
-          <a href="{{ url('home') }}" class="nav-link">
-            <i class="fa fa-wrench mr-1"></i>
-            <p>Funções Administrativa</p>
-          </a>
-        </li>
-        
+               
       </ul>
     </li>
           

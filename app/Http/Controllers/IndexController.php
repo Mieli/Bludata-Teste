@@ -32,4 +32,13 @@ class IndexController extends Controller
         ]);
 
     }
+
+
+    /**
+     *  retorna a view de opção de pesquisa para o usuário
+     */
+    public function pesquisa()
+    {
+        return view('home.pesquisar');
+    }
 }
