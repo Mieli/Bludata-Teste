@@ -12,6 +12,26 @@ class Empresa extends Model
 
     protected $fillable = ['uf','nome','cnpj'];
 
+    
+
+    /**
+     *  Formata a data de cadastro no padrão (dd/mm/YYYY)
+     */
+    public function getCreatedAtAttribute()
+    {   
+        // capturo apenas a data
+        $createdAt = explode(' ', $this->attributes['created_at']); 
+        
+        $dataCadastrada = explode('-', $createdAt[0]);
+
+        $dataFormatada = $dataCadastrada[2] .'/'.$dataCadastrada[1] .'/'.$dataCadastrada[0]; 
+
+        return $dataFormatada;
+    }
+
+
+
+    
     /**
      *  Relacionamento 1/N (Empresa tem Muitos Fornecedores)
      */

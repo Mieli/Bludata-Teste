@@ -3,15 +3,11 @@
 @section('content')
 
     @include('template.componentes.titulo-pagina', [
-        'titulo' => 'Gestão de Empresa ',
+        'titulo' => 'Gestão de Empresa - Alterar',
 
     ])
 
 <div class="card mt-3">  
-    
-    <div class="card-header">
-        <h1>Formulário de Alteração </h1>
-    </div>
 
     <div class="card-body">
        
@@ -20,10 +16,7 @@
 
             <div class="row">
                 <div class="col col-md-4">
-                    @include('formulario.select',['label' => '', 
-                                                  'select' => 'uf',
-                                                  'data' =>  $estados,
-                                                  'value' => $empresa[0]->uf,
+                    @include('formulario.select',['label' => '', 'select' => 'uf', 'data' =>  $estados, 'value' => $empresa[0]->uf,
                                                   'attributes' => [
                                                      'class' => 'form-control', 
                                                      'placeholder' => ''                                   
@@ -32,8 +25,7 @@
                 </div>
 
                 <div class="col">
-                    @include('formulario.input',['label' => '', 
-                                                 'input' => 'cnpj',  
+                    @include('formulario.input',['label' => '', 'input' => 'cnpj',  
                                                  'attributes' => [
                                                     'class' => 'form-control input-lg', 
                                                     'placeholder' => 'CNPJ',
@@ -47,8 +39,7 @@
             
             
 
-            @include('formulario.input',['label' => '', 
-                                         'input' => 'nome',  
+            @include('formulario.input',['label' => '', 'input' => 'nome',  
                                          'attributes' => [
                                             'class' => 'form-control input-lg ', 
                                             'placeholder' => 'Nome da Empresa',

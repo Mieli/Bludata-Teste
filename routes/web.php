@@ -56,6 +56,19 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
         'as'   => 'ajax.fornecedores'
     ]);
 
+
+    /***************** Rota Usuários ****************************************/
+    Route::resource('usuarios', 'UserController');
+    
+    Route::get('pesquisar/usuarios', [
+        'uses' => 'UserController@pesquisarUsuarios',
+        'as'   => 'pesquisar.usuarios'
+    ]);
+
+    Route::get('ajax/usuarios', [
+        'uses' => 'UserController@ajax',
+        'as'   => 'ajax.usuarios'
+    ]);
 });
 
 

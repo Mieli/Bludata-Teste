@@ -17,6 +17,10 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="{{ url('fornecedores')}}" class="nav-link">Fornecedores</a>
       </li>
+
+      <li class="nav-item d-none d-sm-inline-block">
+          <a href="{{ url('usuarios')}}" class="nav-link">Usuários</a>
+        </li>
     </ul>
 
    

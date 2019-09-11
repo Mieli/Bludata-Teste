@@ -21,25 +21,17 @@
                 <thead class="thead-dark"> 
                     <tr>
                         <th>ID</th>                       
-                        <th>Nome</th>                        
-                        {{--<th>Rg</th>
-                         <th>Cpf</th>  
-                        <th>Cnpj</th>--}}               
-                        <th>Telefone Celular</th>
+                        <th>Nome</th>  
+                        <th>Tel / Cel</th>
                         <th>Empresa</th>
-                        {{-- <th>Telefone Residencial</th>
-                        <th>Telefone Comercial</th>--}}
-                        <th> &nbsp;</th>
+                        <th>Data Cadastro</th>
+                        <th style="width: 16%"> &nbsp;</th>
                     </tr>
                 </thead>
                 
-                <tbody>                        
-                    
-                </tbody>
+                <tbody>  </tbody>
 
             </table>
-             
-
     </div>
 </div>
 
@@ -57,15 +49,11 @@
             serverSide: true,
             ajax: '{!! route('ajax.fornecedores') !!}',
             columns: [
-                { data: 'id', name: 'id' },
+                { data: 'id', name: 'id', orderable: false, searchable: false },
                 { data: 'nome', name: 'nome' },
-                //{ data: 'rg', name: 'rg' },
-                // { data: 'cpf', name: 'cpf' },
-                //{ data: 'cnpj', name: 'cnpj' },
-                { data: 'telefone_celular', name: 'telefone_celular' },  
-                { data: 'empresa.nome', name: 'empresa.nome' }, 
-                // { data: 'telefone_residencial', name: 'telefone_residencial' },  
-                // { data: 'telefone_comercial', name: 'telefone_comercial' }, 
+                { data: 'telefone_celular', name: 'telefone_celular', orderable: false, searchable: false },  
+                { data: 'empresa.nome', name: 'empresa.nome', orderable: false, searchable: false }, 
+                { data: 'created_at', name: 'created_at'},
                 { data: 'menu', name: 'menu', orderable: false, searchable: false},
             ],
         });

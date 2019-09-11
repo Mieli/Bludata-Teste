@@ -32,6 +32,15 @@
             'acao'   => 'Pesquisar',
             'rota'   => 'pesquisar/fornecedores',
         ])
+
+        @include('template.menu.opcao', [
+            'color'  => 'bg-success',
+            'titulo' => 'Pesquisar',
+            'texto'  => 'Pesquisar Usuários',
+            'icone'  => '',
+            'acao'   => 'Pesquisar',
+            'rota'   => 'pesquisar/usuarios',
+        ])
            
 
     </div>    

@@ -4,6 +4,6 @@
         <img src="{{ asset('') }}" class="img-circle elevation-2" alt="">
     </div>
     <div class="info">
-        <a href="{{ url('home') }}" class="d-block">{{ Auth::user()->name }}</a>
+        <a href="{!! route('usuarios.show', Auth::user()->id) !!}" class="d-block">{{ substr(Auth::user()->name, 0, 25)  }} ...</a> 
     </div>
 </div>

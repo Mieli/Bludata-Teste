@@ -25,6 +25,40 @@ class Fornecedor extends Model
         'data_nascimento',
     ];
 
+
+
+    /**
+     *  Formata a data de cadastro no padrão (dd/mm/YYYY)
+     */
+    public function getCreatedAtAttribute()
+    {   
+        $createdAt = explode(' ', $this->attributes['created_at']); 
+        
+        $dataCadastrada = explode('-', $createdAt[0]);
+
+        $dataFormatada = $dataCadastrada[2] .'/'.$dataCadastrada[1] .'/'.$dataCadastrada[0]; 
+
+        return $dataFormatada;
+
+    }
+
+
+
+    /**
+     *  Formata a data de nascimento no padrão (dd/mm/YYYY)
+     */
+    public function getDataNascimentoAttribute()
+    {
+        $dataCadastrada = explode('-', $this->attributes['data_nascimento']);
+
+        $dataNascimentoFormatada = $dataCadastrada[2] .'/'. $dataCadastrada[1] .'/'. $dataCadastrada[0]; 
+        
+        return $dataNascimentoFormatada;
+
+    }
+    
+
+
     /**
      * Relacionamento 1/1 (Fornecedor pertence a uma Empresa)
      */

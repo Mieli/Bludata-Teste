@@ -36,4 +36,21 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    /**
+     *  Formata a data de cadastro no padrão (dd/mm/YYYY)
+     */
+    public function getCreatedAtAttribute()
+    {   
+        // capturo apenas a data
+        $createdAt = explode(' ', $this->attributes['created_at']); 
+        
+        $dataCadastrada = explode('-', $createdAt[0]);
+
+        $dataFormatada = $dataCadastrada[2] .'/'.$dataCadastrada[1] .'/'.$dataCadastrada[0]; 
+
+        return $dataFormatada;
+    }
+    
 }

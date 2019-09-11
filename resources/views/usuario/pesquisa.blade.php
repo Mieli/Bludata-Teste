@@ -3,7 +3,7 @@
 @section('content')
 
     @include('template.componentes.titulo-pagina', [
-        'titulo' => 'Gestão de Empresa - Pesquisa',
+        'titulo' => 'Gestão de Usuários - Pesquisa',
 
     ])
 
@@ -14,14 +14,13 @@
             
         <div class="card-body">
     
-            <table id="empresas" class="table table-hover">
+            <table id="usuarios" class="table table-hover">
                 <thead class="thead-dark">
                     <tr>
                         <th>ID</th>
-                        <th>UF</th>
-                        <th>CNPJ</th>
                         <th>Nome</th>
-                        <th>Data Cadastro</th>
+                        <th>Email</th>
+                        <th>Dt Cadastro</th>
                         <th> &nbsp; </th>
                     
                     </tr>
@@ -43,16 +42,15 @@
 
     $( function () {
 
-        $('#empresas').DataTable({
+        $('#usuarios').DataTable({
             processing: true,
             serverSide: true,
-            ajax: '{!! route('ajax.empresas') !!}',
+            ajax: '{!! route('ajax.usuarios') !!}',
             columns: [
-                { data: 'id', name: 'id', orderable: false, searchable: false },
-                { data: 'uf', name: 'uf' },
-                { data: 'cnpj', name: 'cnpj' },
-                { data: 'nome', name: 'nome' },
-                { data: 'created_at', name: 'created_at' },
+                { data: 'id', name: 'id' },
+                { data: 'name', name: 'name' },
+                { data: 'email', name: 'email' },
+                { data: 'created_at', name: 'created_at', orderable: false, searchable: false },
                 { data: 'menu', name: 'menu', orderable: false, searchable: false},
             ],
 

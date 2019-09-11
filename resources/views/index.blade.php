@@ -13,7 +13,7 @@
             'color'  => 'bg-info',
             'titulo' => 'Empresas',
             'texto'  => 'Gestão de Empresas',
-            'icone'  => 'ion ion-bag',
+            'icone'  => 'ion ion-home',
             'acao'   => 'Gestão',
             'rota'   => 'empresas',
         ])
@@ -23,16 +23,25 @@
             'titulo' => 'Fornecedores',
             'texto'  => 'Gestão de Fornnecedor',
             'icone'  => 'ion ion-person-add',
-            'acao'   => 'Cadastrar',
+            'acao'   => 'Cadastrar ',
             'rota'   => 'fornecedores',
+        ])
+
+        @include('template.menu.opcao', [
+            'color'  => 'bg-success',
+            'titulo' => 'Usuários',
+            'texto'  => 'Gestão de Usuários',
+            'icone'  => 'fa fa-users',
+            'acao'   => 'Cadastrar ',
+            'rota'   => 'usuarios',
         ])
 
         @include('template.menu.opcao', [
             'color'  => 'bg-danger',
             'titulo' => 'Pesquisa',
             'texto'  => 'Pesquisar',
-            'icone'  => 'ion ion-stats-bars',
-            'acao'   => 'Pesquisar',
+            'icone'  => 'ion ion-clipboard',
+            'acao'   => 'Pesquisar ',
             'rota'   => 'home/pesquisa',
         ])
 

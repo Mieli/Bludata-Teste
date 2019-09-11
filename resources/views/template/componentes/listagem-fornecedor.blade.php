@@ -17,7 +17,7 @@
                 <li>
                     
                     <span class="text mr-3">
-                        {{ Carbon\Carbon::parse($fornecedor->created_at)->format('d/m/Y') }}
+                        {{ $fornecedor->created_at }}
                     </span>
                     <a href="{{ route('fornecedores.show', $fornecedor->id) }}">
                         <span class="text">{{ $fornecedor->nome }}</span>

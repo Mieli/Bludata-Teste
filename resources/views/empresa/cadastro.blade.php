@@ -8,9 +8,7 @@
     ])
 
 <div class="card mt-3">
-        <div class="card-header">
-            <h1>Formulário de Cadastro </h1>
-        </div>
+ 
     <div class="card-body">
 
         @include('template.mensagens.mensagem')
@@ -22,10 +20,7 @@
 
             <div class="row">
                 <div class="col col-md-4">
-                    @include('formulario.select',['label' => '', 
-                                                  'select' => 'uf',
-                                                  'data' =>  $estados,
-                                                  'value' => '',
+                    @include('formulario.select',['label' => '', 'select' => 'uf', 'data' =>  $estados, 'value' => '',
                                                   'attributes' => [
                                                      'class' => 'form-control', 
                                                      'placeholder' => 'Estado ...'                                   
@@ -34,8 +29,7 @@
                 </div>
 
                 <div class="col">
-                    @include('formulario.input',['label' => '',
-                                                 'input' => 'cnpj',  
+                    @include('formulario.input',['label' => '', 'input' => 'cnpj', 
                                                  'attributes' => [
                                                     'class' => 'form-control ', 
                                                     'placeholder' => 'CNPJ',
@@ -49,8 +43,7 @@
             
             
 
-            @include('formulario.input',['label' => '',
-                                         'input' => 'nome',  
+            @include('formulario.input',['label' => '', 'input' => 'nome',  
                                          'attributes' => [
                                             'class' => 'form-control input-lg ', 
                                             'placeholder' => 'Nome da Empresa',

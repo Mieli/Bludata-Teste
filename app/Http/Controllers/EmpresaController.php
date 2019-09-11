@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\EmpresaRepository;
 use Illuminate\Http\Request;
-use PHPUnit\Framework\Exception;
+
 
 
 class EmpresaController extends Controller
@@ -12,32 +12,36 @@ class EmpresaController extends Controller
 
     private $repository;
 
+
+
+
     public function __construct(EmpresaRepository $repository)
     {
         $this->repository = $repository;
     }
 
 
+
+
+
     public function index()
     {   
-        $empresas = $this->repository->todos();
-
-        return view('empresa.home', [
-            'empresas' => $empresas,
-            'estados' => $this->getEstados(),
-        ]);
+        return view('empresa.home');
     }
+
+
+
 
 
     public function create()
     {
-        $empresas = $this->repository->todos();
-
-        return view('empresa.cadastro',[
-            'empresas' => $empresas,
+        return view('empresa.cadastro',[            
             'estados' => $this->getEstados()
         ]);
     }
+
+
+
 
 
     public function store(Request $request)
@@ -48,34 +52,62 @@ class EmpresaController extends Controller
            'nome'   => 'required|min:5',
        ]);
 
-        $empresa = $this->repository->add($request->all());
+       try{
 
-        return redirect()->route('empresas.create')
-                         ->with('mensagem-success', 'Cadastrado realizado com sucesso!'); 
+            $this->repository->create($request->all());
 
+            return redirect()->route('empresas.create')
+                            ->with('mensagem-success', 'Cadastrado realizado com sucesso!'); 
+
+       }catch( Exception $e ){
+
+            return redirect()->route('empresas.create')
+                             ->with('mensagem-danger', 'Houve um Problema: '. $e);
+
+       }
     }
+
+
+
 
 
     public function show($id)
     {
-        $empresa = $this->repository->getById($id);
+        $empresa = $this->repository->getId($id);
+        
+        if(count($empresa) != 0){
 
-        return view('empresa.detalhes',[
-            'empresa' => $empresa,
-            'estados' => $this->getEstados()
-        ]);
+            return view('empresa.detalhes',[
+                'empresa' => $empresa,
+                'estados' => $this->getEstados()
+            ]);
+
+        }else{
+           
+            return redirect()->route('empresas.index')
+                             ->with('mensagem-danger', 'Empresa não cadastrada no sistema!  ');
+
+        }        
+        
     }
+
+
+
 
  
     public function edit($id)
     {
-        $empresa = $this->repository->getById($id);
+        $empresa = $this->repository->getId($id);
         
         return view('empresa.editar',[
             'empresa' => $empresa,
             'estados' => $this->getEstados()
         ]);
     }
+
+
+
+
 
     public function update(Request $request, $id)
     {
@@ -85,75 +117,96 @@ class EmpresaController extends Controller
             'nome'   => 'required|min:5',
         ]);
 
-        $this->repository->update($id, $request->all());
-        return redirect()->route('empresas.index')
-                         ->with('mensagem-success', 'Atualização realizada com sucesso!'); 
+        try{
 
+            $this->repository->update($id, $request->all());
+
+            return redirect()->route('empresas.index')
+                             ->with('mensagem-success', 'Atualização realizada com sucesso!'); 
+
+        }catch(\Exception $e){
+
+            return redirect()->route('empresas.index')
+                             ->with('mensagem-danger', 'Houve um Problema: '. $e);
+                             
+        }
     }
+
+
 
 
     public function destroy($id)
     {
-      
-        $this->repository->delete($id);
-        return redirect()->route('empresas.index')
+       try{
+
+            $this->repository->delete($id);
+            
+            return redirect()->route('empresas.index')
                          ->with('mensagem-danger', 'Exclusão realizada com sucesso!');
 
+       }catch(\Exception $e){
+
+            return redirect()->route('empresas.index')
+                             ->with('mensagem-danger', 'Houve um Problema: '. $e);
+
+       }
     }
+
+
+
+
 
     public function pesquisarEmpresa()
     {   
         return view('empresa.pesquisa');
     }
 
+
+
+
+
     // metodo para preencher o Datatable da tela de pesquisa.
     public function ajax()
     {
         return datatables()->eloquent($this->repository->query())
                     ->addIndexColumn()
-                    ->addColumn('menu', 'empresa.actions')
+                    ->addColumn('menu', 'empresa.actions') // mostrar os botões no dataTable
                     ->rawColumns(['menu'])
                     ->make(true);
     }
 
-    
 
 
-    public function pesquisarFornecedoresDaEmpresa()
-    {          
-        return view('empresa.pesquisa-fornecedores-da-empresas');
-    }
 
     public function getEstados()
     {
-        return  $uf = [
-            'AC'=>'AC',
-            'AL'=>'AL',
-            'AP'=>'AP',
-            'AM'=>'AM',
-            'BA'=>'BA',
-            'CE'=>'CE',
-            'DF'=>'DF',
-            'ES'=>'ES',
-            'GO'=>'GO',
-            'MA'=>'MA',
-            'MT'=>'MT',
-            'MS'=>'MS',
-            'MG'=>'MG',
-            'PA'=>'PA',
-            'PB'=>'PB',
-            'PR'=>'PR',
-            'PE'=>'PE',
-            'PI'=>'PI',
-            'RJ'=>'RJ',
-            'RN'=>'RN',
-            'RS'=>'RS',
-            'RO'=>'RO',
-            'RR'=>'RR',
-            'SC'=>'SC',
-            'SP'=>'SP',
-            'SE'=>'SE',
-            'TO'=>'TO',
+        return  ['AC'=>'AC',
+                 'AL'=>'AL',
+                 'AP'=>'AP',
+                 'AM'=>'AM',
+                 'BA'=>'BA',
+                 'CE'=>'CE',
+                 'DF'=>'DF',
+                 'ES'=>'ES',
+                 'GO'=>'GO',
+                 'MA'=>'MA',
+                 'MT'=>'MT',
+                 'MS'=>'MS',
+                 'MG'=>'MG',
+                 'PA'=>'PA',
+                 'PB'=>'PB',
+                 'PR'=>'PR',
+                 'PE'=>'PE',
+                 'PI'=>'PI',
+                 'RJ'=>'RJ',
+                 'RN'=>'RN',
+                 'RS'=>'RS',
+                 'RO'=>'RO',
+                 'RR'=>'RR',
+                 'SC'=>'SC',
+                 'SP'=>'SP',
+                 'SE'=>'SE',
+                 'TO'=>'TO',
         ];
     }
 }
