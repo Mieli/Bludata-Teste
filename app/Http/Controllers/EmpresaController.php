@@ -99,10 +99,19 @@ class EmpresaController extends Controller
     {
         $empresa = $this->repository->getId($id);
         
-        return view('empresa.editar',[
-            'empresa' => $empresa,
-            'estados' => $this->getEstados()
-        ]);
+        if(count($empresa) != 0){
+                
+            return view('empresa.editar',[
+                'empresa' => $empresa,
+                'estados' => $this->getEstados()
+            ]);
+
+        }else{
+            
+            return redirect()->route('empresas.index')
+                             ->with('mensagem-danger', 'Empresa não cadastrada no sistema!  ');
+
+        }
     }
 
 

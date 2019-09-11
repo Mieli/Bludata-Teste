@@ -10,32 +10,22 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
+
+    protected $fillable = [ 
         'name', 'email', 'password',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
+
+
     protected $hidden = [
         'password', 'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
+
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
 
 
     /**
@@ -43,7 +33,7 @@ class User extends Authenticatable
      */
     public function getCreatedAtAttribute()
     {   
-        // capturo apenas a data
+        // divide a timestamp em um array com 2 posições, (DATA posição 0 e HORA posição 1)
         $createdAt = explode(' ', $this->attributes['created_at']); 
         
         $dataCadastrada = explode('-', $createdAt[0]);

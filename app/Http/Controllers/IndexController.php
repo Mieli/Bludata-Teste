@@ -8,8 +8,11 @@ use App\Repositories\FornecedorRepository;
 
 class IndexController extends Controller
 {
+    
+
     private $empresa;
     private $fornecedor;
+
 
     public function __construct(EmpresaRepository $empresaRepository, FornecedorRepository $fornecedorRepository)
     {
@@ -17,6 +20,8 @@ class IndexController extends Controller
         $this->fornecedor = $fornecedorRepository;
     }
    
+
+
     /**
      * Retorna na view uma lista das ultimas(5) empresas Cadastradas
      */
@@ -34,6 +39,8 @@ class IndexController extends Controller
     }
 
 
+
+
     /**
      *  retorna a view de opção de pesquisa para o usuário
      */
@@ -41,4 +48,6 @@ class IndexController extends Controller
     {
         return view('home.pesquisar');
     }
+
+    
 }

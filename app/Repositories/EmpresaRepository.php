@@ -6,7 +6,9 @@ use App\Models\Empresa;
 
 class EmpresaRepository
 {
+
     private $empresa;
+
 
     public function __construct(Empresa $empresa)
     {
@@ -14,10 +16,13 @@ class EmpresaRepository
     }
 
 
+
     public function pesquisarTodos()
     {
         return $this->empresa->orderBy('id', 'DESC')->get();
     }
+
+
 
     /**
      * Esse método retorna as cidades no formato 
@@ -29,6 +34,8 @@ class EmpresaRepository
         return $this->empresa->pluck('nome', 'id');
     }
 
+
+
     
     public function ultimosRegistro($quantidade)
     {
@@ -36,6 +43,8 @@ class EmpresaRepository
                              ->take($quantidade)
                              ->get();
     }
+
+
 
 
     /**
@@ -49,6 +58,8 @@ class EmpresaRepository
     }
 
 
+
+
     /**
      *  Metodo que retorna solicitação do DataTable
      */
@@ -59,10 +70,14 @@ class EmpresaRepository
 
 
 
+
+
     public function create(array $data)
     { 
        return $this->empresa->create($data);
     }
+
+
 
 
     public function update($id, array $data)
@@ -76,6 +91,8 @@ class EmpresaRepository
         return $empresa->save();
 
     }
+
+    
 
     
     public function delete($id)

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth as IlluminateAuth;
 class LoginController extends Controller
 {
     
+
     public function autenticar(Request $request){
 
         $data = $request->all();
@@ -25,6 +26,9 @@ class LoginController extends Controller
 
     }
 
+
+
+    
     public function sair(){
        
         Auth::logout();          

@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\Empresa;
 
 
-
 class Fornecedor extends Model
 {   
+
     protected $table = 'fornecedores';
     
+
     protected $fillable = [
         'empresa_id', 
         'nome',
@@ -32,6 +33,7 @@ class Fornecedor extends Model
      */
     public function getCreatedAtAttribute()
     {   
+        // divide a timestamp em um array com 2 posições, (DATA posição 0 e HORA posição 1)
         $createdAt = explode(' ', $this->attributes['created_at']); 
         
         $dataCadastrada = explode('-', $createdAt[0]);

@@ -192,9 +192,18 @@ class FornecedorController extends Controller
     {
         $fornecedor = $this->fornecedorRepository->getId($id);
 
-        return view('fornecedor.detalhes', [
-            'fornecedor' => $fornecedor,
-        ]);
+        if(count($fornecedor) != 0){
+
+            return view('fornecedor.detalhes', [
+                'fornecedor' => $fornecedor,
+            ]);
+
+        }else{
+            
+            return redirect()->route('fornecedores.index')
+                            ->with('mensagem-danger', 'Fornecedor não cadastrado no sistema!  ');
+
+        } 
         
     }
 
@@ -207,10 +216,19 @@ class FornecedorController extends Controller
         $empresas = $this->empresaRepository->pesquisaParaBoxDeSelecao();
         $fornecedor = $this->fornecedorRepository->getId($id);
 
-        return view('fornecedor.editar', [
-            'empresas'   => $empresas,
-            'fornecedor' => $fornecedor,
-        ]);
+        if(count($fornecedor) != 0){
+
+            return view('fornecedor.editar', [
+                'empresas'   => $empresas,
+                'fornecedor' => $fornecedor,
+            ]);
+
+        }else{
+
+            return redirect()->route('fornecedores.index')
+                             ->with('mensagem-danger', 'Fornecedor não cadastrado no sistema!  ');
+
+        }
     }
 
 

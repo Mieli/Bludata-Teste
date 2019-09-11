@@ -74,6 +74,7 @@
                                         'class'       => 'form-control ', 
                                         'placeholder' => 'CPF',
                                         'onkeypress'  => "$(this).mask('000.000.000-00');",
+                                        'required',
                                     ] 
                     ])
                 </div>
@@ -86,6 +87,7 @@
                                         'class'       => 'form-control ', 
                                         'placeholder' => 'CNPJ',
                                         'onkeypress'  => "$(this).mask('00.000.000/0000-00');",
+                                        'required',
                                 ] 
                     ])
                 </div>

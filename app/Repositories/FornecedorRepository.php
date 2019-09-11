@@ -8,7 +8,10 @@ use Yajra\Datatables\Datatables;
 class FornecedorRepository
 {
 
+
     private $fornecedor;
+
+
 
     public function __construct(Fornecedor $fornecedor)
     {
@@ -16,6 +19,8 @@ class FornecedorRepository
         $this->fornecedor = $fornecedor;
 
     }
+
+
 
 
     // dados usado na home do site
@@ -29,6 +34,9 @@ class FornecedorRepository
 
     }
 
+
+
+
     public function getId($id)
     {
 
@@ -38,6 +46,8 @@ class FornecedorRepository
 
     }
     
+
+
  
      /**
      *  Metodo que retorna solicitação do DataTable
@@ -50,12 +60,17 @@ class FornecedorRepository
     }
 
 
+
+
     public function create(array $data)
     {  
 
         return $this->fornecedor->create($data);
 
     }
+
+
+
 
     public function update($id, $data)
     {
@@ -75,6 +90,9 @@ class FornecedorRepository
         return $fornecedor->save();    
         
     }
+
+
+    
 
     public function delete($id)
     {  

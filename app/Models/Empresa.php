@@ -19,7 +19,7 @@ class Empresa extends Model
      */
     public function getCreatedAtAttribute()
     {   
-        // capturo apenas a data
+        // divide a timestamp em um array com 2 posições, (DATA posição 0 e HORA posição 1)
         $createdAt = explode(' ', $this->attributes['created_at']); 
         
         $dataCadastrada = explode('-', $createdAt[0]);
