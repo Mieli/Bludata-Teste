@@ -61,7 +61,7 @@ class UserController extends Controller
         }else{
            
             return redirect()->route('usuarios.index')
-                             ->with('mensagem-danger', 'Usuários não cadastrada no sistema!  ');
+                             ->with('mensagem-danger', 'Usuário não cadastrado no sistema!  ');
 
         }        
         
@@ -106,7 +106,7 @@ class UserController extends Controller
             $this->repository->create($request->all());
             
             return redirect()->route('usuarios.create')
-                             ->with('mensagem-success', 'Cadastrado realizado com sucesso!'); 
+                             ->with('mensagem-success', 'Cadastro realizado com sucesso!'); 
 
         }catch( Exception $e ){
             return redirect()->route('usuarios.create')
@@ -132,13 +132,12 @@ class UserController extends Controller
 
             $this->repository->update($id, $request->all());
             
-            return redirect()->route('usuarios.index')
-                             ->with('mensagem-success', 'Atualização realizada com sucesso!'); 
+            return redirect()->route('pesquisar.usuarios')
+                             ->with('mensagem-success', 'Alteração realizada com sucesso!'); 
 
         }catch( Exception $e ){
 
-            return redirect()->route('usuarios.index')
-                             ->with('mensagem-danger', 'Houve um Problema: '. $e);
+            return redirect()->back()->with('mensagem-danger', 'Houve um Problema: '. $e);
                              
         }
     }
@@ -153,13 +152,13 @@ class UserController extends Controller
        try{
 
             $this->repository->delete($id);
+
             return redirect()->route('pesquisar.usuarios')
-                         ->with('mensagem-danger', 'Exclusão realizada com sucesso!');
+                             ->with('mensagem-danger', 'Exclusão realizada com sucesso!');
 
        }catch( Exception $e ){
 
-            return redirect()->route('usuarios.index')
-                             ->with('mensagem-danger', 'Houve um Problema: '. $e);
+            return redirect()->back()->with('mensagem-danger', 'Houve um Problema: '. $e);
 
        }
     }

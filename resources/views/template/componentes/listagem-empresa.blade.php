@@ -31,7 +31,7 @@
         <!-- /.card-body -->
         <div class="card-footer clearfix">
             <a href="{{ route('empresas.create') }}">
-                <button type="button" class="btn btn-info float-right"><i class="fa fa-plus"></i> Cadastrar Empresa</button>
+                <button type="button" class="btn btn-info float-right"><i class="fa fa-plus"></i> {{ $botao }} </button>
             </a>    
         </div>
     </div>

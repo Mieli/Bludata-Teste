@@ -57,7 +57,7 @@ class EmpresaController extends Controller
             $this->repository->create($request->all());
 
             return redirect()->route('empresas.create')
-                            ->with('mensagem-success', 'Cadastrado realizado com sucesso!'); 
+                            ->with('mensagem-success', 'Cadastro realizado com sucesso!'); 
 
        }catch( Exception $e ){
 
@@ -131,7 +131,7 @@ class EmpresaController extends Controller
             $this->repository->update($id, $request->all());
 
             return redirect()->route('empresas.index')
-                             ->with('mensagem-success', 'Atualização realizada com sucesso!'); 
+                             ->with('mensagem-success', 'Alteração realizada com sucesso!'); 
 
         }catch(\Exception $e){
 
@@ -150,13 +150,12 @@ class EmpresaController extends Controller
 
             $this->repository->delete($id);
             
-            return redirect()->route('empresas.index')
+            return redirect()->route('pesquisar.empresas')
                          ->with('mensagem-danger', 'Exclusão realizada com sucesso!');
 
        }catch(\Exception $e){
 
-            return redirect()->route('empresas.index')
-                             ->with('mensagem-danger', 'Houve um Problema: '. $e);
+            return redirect()->back()->with('mensagem-danger', 'Houve um Problema: '. $e);
 
        }
     }

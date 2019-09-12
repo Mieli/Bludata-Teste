@@ -19,10 +19,10 @@
         <table id="fornecedores" class="table table-hover" >
             
                 <thead class="thead-dark"> 
-                    <tr>
-                        <th>ID</th>                       
+                    <tr>                   
                         <th>Nome</th>  
-                        <th>Tel / Cel</th>
+                        <th>CPF</th>
+                        <th>CNPJ</th>
                         <th>Empresa</th>
                         <th>Data Cadastro</th>
                         <th style="width: 16%"> &nbsp;</th>
@@ -49,9 +49,9 @@
             serverSide: true,
             ajax: '{!! route('ajax.fornecedores') !!}',
             columns: [
-                { data: 'id', name: 'id', orderable: false, searchable: false },
                 { data: 'nome', name: 'nome' },
-                { data: 'telefone_celular', name: 'telefone_celular', orderable: false, searchable: false },  
+                { data: 'cpf', name: 'cpf' },
+                { data: 'cnpj', name: 'cnpj'},  
                 { data: 'empresa.nome', name: 'empresa.nome', orderable: false, searchable: false }, 
                 { data: 'created_at', name: 'created_at'},
                 { data: 'menu', name: 'menu', orderable: false, searchable: false},

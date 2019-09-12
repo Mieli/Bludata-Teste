@@ -25,7 +25,7 @@
                     @include('formulario.input',['label' => '', 'input' => 'name',  
                                     'attributes' => [
                                         'class'       => 'form-control input-lg ', 
-                                        'placeholder' => 'NOME DO USUÁRIO',
+                                        'placeholder' => 'Nome',
                                         'required'
                                     ] 
                     ])

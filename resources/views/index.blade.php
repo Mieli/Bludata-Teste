@@ -3,7 +3,7 @@
 @section('content')
 
 @include('template.componentes.titulo-pagina', [
-    'titulo' => 'Budata - Software',
+    'titulo' => 'Bludata - Software',
 
 ])
 
@@ -21,7 +21,7 @@
         @include('template.menu.opcao', [
             'color'  => 'bg-warning',
             'titulo' => 'Fornecedores',
-            'texto'  => 'Gestão de Fornnecedor',
+            'texto'  => 'Gestão de Fornecedor',
             'icone'  => 'ion ion-person-add',
             'acao'   => 'Cadastrar ',
             'rota'   => 'fornecedores',
@@ -58,7 +58,7 @@
        
 
             @include('template.componentes.listagem-empresa',[
-                'titulo' => '(05) Últimas Empresas Cadastradas',
+                'titulo' => 'Empresas Cadastradas',
                 'route'  => 'empresas.create',
                 'botao'  => 'Cadastrar Empresa' 
             ])
@@ -69,7 +69,7 @@
         <section class="col-lg-6 ">
 
                 @include('template.componentes.listagem-fornecedor',[
-                    'titulo' => '(05) Últimos Fornecedores Cadastrados ',
+                    'titulo' => 'Fornecedores Cadastrados ',
                     'route'  => 'fornecedores.create',
                     'botao'  => 'Cadastrar Fornecededor' 
                 ])

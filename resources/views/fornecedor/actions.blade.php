@@ -3,11 +3,11 @@
 </a>
 
 <a  href="{!! route('fornecedores.edit',$id)  !!}" >
-        <button class="btn btn-warning ml-2 pull-left"  title="Alterar registro"><i class="fa fa-edit"></i></button>
+        <button class="btn btn-warning ml-1 pull-left"  title="Alterar registro"><i class="fa fa-edit"></i></button>
 </a>
 
 {!! Form::open(['route' => ['fornecedores.destroy', $id], 'method' => 'delete', 'class' => '']) !!}
     
-    {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'title' => 'Excluir Registro', 'class' => 'btn btn-danger ml-2' ,'onclick' => "return confirm('Deseja realmente excluir o registro ?');"])  !!}
+    {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'title' => 'Excluir Registro', 'class' => 'btn btn-danger ml-1' ,'onclick' => "return confirm('Deseja realmente excluir o registro ?');"])  !!}
 
 {!! Form::close() !!}

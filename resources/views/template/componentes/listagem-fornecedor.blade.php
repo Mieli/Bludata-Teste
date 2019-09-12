@@ -32,7 +32,7 @@
         <!-- /.card-body -->
         <div class="card-footer clearfix">
             <a href="{{ route( $route ) }}">
-                <button type="button" class="btn btn-info float-right"><i class="fa fa-plus"></i>{{ $botao }}</button>
+                <button type="button" class="btn btn-info float-right"><i class="fa fa-plus"></i> {{ $botao }} </button>
             </a>    
         </div>
     </div>

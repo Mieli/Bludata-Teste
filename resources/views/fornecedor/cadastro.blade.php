@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="form-check form-check-inline ml-5">
-                    @include('formulario.radio',['label' => 'Pessoa Jurírica', 'input'  => 'tipoPessoa', 'value'  => 'J',                                 
+                    @include('formulario.radio',['label' => 'Pessoa Jurídica', 'input'  => 'tipoPessoa', 'value'  => 'J',                                 
                                 'attributes' => [
                                     'id'    => 'tipoPessoa',
                                     'class' => 'form-check-input',
@@ -55,7 +55,7 @@
                     @include('formulario.input',['label' => '', 'input' => 'nome',  
                                     'attributes' => [
                                         'class'       => 'form-control input-lg ', 
-                                        'placeholder' => 'NOME DO FORNECEDOR',
+                                        'placeholder' => 'Nome ',
                                         'required'
                                     ] 
                     ])
@@ -183,16 +183,19 @@
 
 $(document).ready( function () {
 
+    $('#campoRg').hide();
+    $('#campoDataNascimento').hide();
+
     $('input:radio[name="tipoPessoa"]').change( function() {
-        if ($(this).is(':checked') && $(this).val() == 'J') {
-    
-            $('#campoRg').hide();
-            $('#campoDataNascimento').hide();
+        if ($(this).is(':checked') && $(this).val() == 'F') {
+            
+            $('#campoRg').show();
+            $('#campoDataNascimento').show();
 
         }else{
            
-            $('#campoRg').show();
-            $('#campoDataNascimento').show();
+            $('#campoRg').hide();
+            $('#campoDataNascimento').hide();
 
         }
     });  

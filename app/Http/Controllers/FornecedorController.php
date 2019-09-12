@@ -118,7 +118,7 @@ class FornecedorController extends Controller
             if( $this->calcularIdade( $dataNascimentoFormatada ) < 18 ){
                 
                 return redirect()->back()
-                                ->with('mensagem-danger', 'O Cadastro de Pessoas Físicas menor de idade não permitido para empresas do Estado do Paraná!')
+                                ->with('mensagem-danger', 'O Cadastro de Pessoa Física menor de idade não é permitido para empresas do Estado do Paraná!')
                                 ->withInput();
             }
         }
@@ -159,7 +159,7 @@ class FornecedorController extends Controller
             $this->fornecedorRepository->create($data); 
                 
             return redirect()->route('fornecedores.create')
-                            ->with('mensagem-success', 'Cadastrado realizado com sucesso!'); 
+                            ->with('mensagem-success', 'Cadastro realizado com sucesso!'); 
 
         }catch(\Exception $e){
 
@@ -281,7 +281,7 @@ class FornecedorController extends Controller
             if( $this->calcularIdade( $dataNascimentoFormatada ) < 18 ){
                 
                 return redirect()->back()
-                                ->with('mensagem-danger', 'O Cadastro de Pessoas Físicas menor de idade não permitido para empresas do Estado do Paraná!')
+                                ->with('mensagem-danger', 'A Atualização de Pessoa Física menor de idade não é permitido para empresas do Estado do Paraná!')
                                 ->withInput();
             }
         }
@@ -321,7 +321,7 @@ class FornecedorController extends Controller
             $this->fornecedorRepository->update($id, $data);
                 
             return redirect()->route('pesquisar.fornecedores')
-                            ->with('mensagem-success', 'Atualização realizada com sucesso!'); 
+                            ->with('mensagem-success', 'Alteração realizada com sucesso!'); 
 
         }catch(\Exception $e){
 
@@ -340,8 +340,8 @@ class FornecedorController extends Controller
 
             $this->fornecedorRepository->delete($id);
                 
-            return redirect()->route('fornecedores.create')
-                             ->with('mensagem-success', 'Atualização realizada com sucesso!'); 
+            return redirect()->route('pesquisar.fornecedores')
+                             ->with('mensagem-danger', 'Exclusão realizada com sucesso!'); 
 
         }catch(\Exception $e){
 

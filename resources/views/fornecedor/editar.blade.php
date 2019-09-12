@@ -21,7 +21,7 @@
             <div class="row ">
                 <div class="form-check form-check-inline ml-2">
 
-                    @include('formulario.radio',['label' => 'Pessoa Jurírica', 'input'  => 'tipoPessoa',  'value'  => 'J',                                 
+                    @include('formulario.radio',['label' => 'Pessoa Física', 'input'  => 'tipoPessoa',  'value'  => 'F',                                 
                                 'attributes' => [
                                     'id'    => 'tipoPessoa',
                                     'class' => 'form-check-input',
@@ -29,7 +29,7 @@
                     ])
                 </div>
                 <div class="form-check form-check-inline ml-5">    
-                    @include('formulario.radio',['label' => 'Pessoa Física', 'input'  => 'tipoPessoa', 'value'  => 'F',
+                    @include('formulario.radio',['label' => 'Pessoa Jurídica', 'input'  => 'tipoPessoa', 'value'  => 'J',
                                 'attributes' => [
                                     'id'    => 'tipoPessoa',
                                     'class' => 'form-check-input',
@@ -180,16 +180,19 @@
 
 $(document).ready( function () {
 
+    $('#campoRg').hide();
+    $('#campoDataNascimento').hide();
+
     $('input:radio[name="tipoPessoa"]').change( function() {
-        if ($(this).is(':checked') && $(this).val() == 'J') {
-    
-            $('#campoRg').hide();
-            $('#campoDataNascimento').hide();
+        if ($(this).is(':checked') && $(this).val() == 'F') {
+            
+            $('#campoRg').show();
+            $('#campoDataNascimento').show();
 
         }else{
            
-            $('#campoRg').show();
-            $('#campoDataNascimento').show();
+            $('#campoRg').hide();
+            $('#campoDataNascimento').hide();
 
         }
     });  
